@@ -13,7 +13,7 @@ class ISMA_Admin_Workflow {
         add_action('add_meta_boxes', array($this, 'add_workflow_meta_boxes'));
         add_action('save_post_isma_course', array($this, 'handle_course_submission'), 20, 2);
         add_action('save_post_isma_exercise', array($this, 'handle_exercise_submission'), 20, 2);
-        add_action('admin_menu', array($this, 'add_charter_admin_menu'));
+        add_action('admin_menu', array($this, 'add_charter_submenu'));
         add_action('wp_ajax_isma_charter_approve', array($this, 'handle_charter_approval'));
     }
     
@@ -137,12 +137,23 @@ class ISMA_Admin_Workflow {
         }
     }
     
-    public function add_charter_admin_menu() {
+    public function add_charter_submenu() {
+        // Add submenu under Courses for charter management
         add_submenu_page(
             'edit.php?post_type=isma_course',
             __('Charte en Attente', 'isma-education-platform'),
             __('Charte en Attente', 'isma-education-platform'),
             'charter_courses',
+            'isma-charter-pending',
+            array($this, 'render_charter_pending_page')
+        );
+        
+        // Also add under Exercises if needed (or handle both in one page)
+        add_submenu_page(
+            'edit.php?post_type=isma_exercise',
+            __('Charte Exercices', 'isma-education-platform'),
+            __('Charte Exercices', 'isma-education-platform'),
+            'charter_exercises',
             'isma-charter-pending',
             array($this, 'render_charter_pending_page')
         );
