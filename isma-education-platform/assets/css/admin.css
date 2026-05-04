@@ -1,0 +1,44 @@
+/* ISMA Education Platform - Admin Styles */
+
+.workflow-status {
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.status-pending { color: orange; font-weight: bold; }
+.status-approved { color: green; font-weight: bold; }
+.status-rejected { color: red; font-weight: bold; }
+
+.late-submission {
+    background-color: #ffebee !important;
+}
+
+.grade-input {
+    width: 80px;
+}
+
+.feedback-textarea {
+    width: 100%;
+    min-height: 80px;
+}
+
+.submission-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.submission-table th,
+.submission-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.submission-table th {
+    background: #f5f5f5;
+}
+
+.charter-approve-btn {
+    margin-left: 5px;
+}
